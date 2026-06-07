@@ -29,17 +29,6 @@ const nextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      // Redirect www to non-www (canonical)
-      {
-        source: '/(.*)',
-        has: [{ type: 'host', value: 'www.chatjeen.online' }],
-        destination: 'https://chatjeen.online/:path*',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
