@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -9,30 +11,84 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const BASE_URL = "https://chatjeen.online";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: "Chatjeen — AI-Powered Anonymous Chat with Strangers",
+    default: "Chatjeen — Free Anonymous Chat With Strangers | AI-Powered",
     template: "%s | Chatjeen",
   },
-  description: "Chatjeen matches you with real people globally using AI. 100% free anonymous chat for Gen-Z. No signup, no email, no awkward silence.",
-  metadataBase: new URL("https://chatjeen.online"),
+  description:
+    "Chat anonymously with strangers worldwide — no signup, no email, no tracking. AI matches you by interests in seconds. 100% free. The Omegle alternative built for Gen-Z.",
+  keywords: [
+    "anonymous chat",
+    "chat with strangers",
+    "random chat",
+    "omegle alternative",
+    "free anonymous chat",
+    "talk to strangers",
+    "online chat rooms",
+    "chatjeen",
+    "ai chat",
+    "no signup chat",
+  ],
+  authors: [{ name: "Chatjeen", url: BASE_URL }],
+  creator: "Chatjeen",
+  publisher: "Chatjeen",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
-    canonical: "https://chatjeen.online",
+    canonical: BASE_URL,
   },
   openGraph: {
-    title: "Chatjeen — AI-Powered Anonymous Chat with Strangers",
-    description: "Chatjeen matches you with real people globally using AI. 100% free anonymous chat for Gen-Z. No signup, no email, no awkward silence.",
-    url: "https://chatjeen.online",
+    title: "Chatjeen — Free Anonymous Chat With Strangers | AI-Powered",
+    description:
+      "Chat anonymously with strangers worldwide. No signup, no email, no tracking. AI-matched by interests. 100% free. Start in one click.",
+    url: BASE_URL,
     siteName: "Chatjeen",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/icons/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Chatjeen — Talk to Strangers. The Good Kind.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chatjeen — AI-Powered Anonymous Chat",
-    description: "Chatjeen is a 100% free, AI-powered anonymous text chat for Gen-Z.",
+    title: "Chatjeen — Free Anonymous AI Chat",
+    description:
+      "No signup. No email. No tracking. AI matches you with compatible strangers worldwide. 100% free.",
+    images: ["/icons/og-image.png"],
+    creator: "@chatjeen",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
   },
   manifest: "/manifest.json",
+  category: "technology",
 };
 
 export const viewport: Viewport = {
@@ -52,10 +108,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakartaSans.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <meta name="theme-color" content="#7C3AED" />
       </head>
       <body className="font-sans antialiased text-textPrimary bg-background">
         {children}
+        <Analytics />
+        <SpeedInsights />
 
         {/* Google Analytics */}
         <Script

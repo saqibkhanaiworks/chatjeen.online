@@ -1,18 +1,50 @@
 {
-  "name": "Chatjeen",
+  "name": "Chatjeen — Anonymous Chat With Strangers",
   "short_name": "Chatjeen",
-  "description": "AI-powered anonymous text chat for Gen-Z. Find compatible matches by interests instantly.",
+  "description": "AI-powered anonymous text chat for Gen-Z. Find compatible matches by interests instantly. No signup, no email, 100% free.",
   "theme_color": "#7C3AED",
   "background_color": "#0F0F13",
   "display": "standalone",
   "start_url": "/chat",
+  "scope": "/",
   "orientation": "portrait",
+  "categories": ["social", "communication"],
+  "lang": "en",
   "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "/icon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Chatjeen Homepage"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

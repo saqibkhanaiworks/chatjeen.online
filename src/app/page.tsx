@@ -87,24 +87,114 @@ export default function Home() {
             "@context": "https://schema.org",
             "@graph": [
               {
+                "@type": "Organization",
+                "@id": "https://chatjeen.online/#organization",
+                "name": "Chatjeen",
+                "url": "https://chatjeen.online",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://chatjeen.online/icons/icon-512.png",
+                  "width": 512,
+                  "height": 512
+                },
+                "description": "Chatjeen is an AI-powered anonymous chat platform for Gen-Z. Chat with strangers worldwide — no signup, no email, 100% free.",
+                "foundingDate": "2024",
+                "sameAs": []
+              },
+              {
                 "@type": "WebSite",
                 "@id": "https://chatjeen.online/#website",
                 "url": "https://chatjeen.online",
                 "name": "Chatjeen",
-                "description": "AI-powered anonymous text chat for Gen-Z."
+                "description": "AI-powered anonymous text chat for Gen-Z. Match with strangers by interests instantly.",
+                "publisher": { "@id": "https://chatjeen.online/#organization" },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://chatjeen.online/chat?mood={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
               },
               {
-                "@type": "SoftwareApplication",
-                "@id": "https://chatjeen.online/#software",
+                "@type": "WebApplication",
+                "@id": "https://chatjeen.online/#app",
                 "name": "Chatjeen",
+                "url": "https://chatjeen.online",
                 "operatingSystem": "All",
                 "applicationCategory": "SocialNetworkingApplication",
+                "browserRequirements": "Requires JavaScript. Requires HTML5.",
                 "offers": {
                   "@type": "Offer",
                   "price": "0",
                   "priceCurrency": "USD"
                 },
-                "description": "AI-native anonymous chat. Match by interests instantly with zero signup."
+                "featureList": [
+                  "Anonymous chat with strangers",
+                  "AI-powered interest matching",
+                  "No signup required",
+                  "Real-time AI icebreakers",
+                  "Global chat community",
+                  "Built-in AI content moderation"
+                ],
+                "screenshot": "https://chatjeen.online/icons/og-image.png",
+                "description": "AI-native anonymous chat. Match by interests instantly with zero signup. 100% free.",
+                "publisher": { "@id": "https://chatjeen.online/#organization" }
+              },
+              {
+                "@type": "FAQPage",
+                "@id": "https://chatjeen.online/#faq",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is Chatjeen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Chatjeen is a free AI-powered anonymous chat platform where you can talk to strangers from around the world. It uses AI to match you with compatible people based on shared interests, and provides AI-generated icebreakers so conversations start naturally. No account, email, or personal information is required."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is Chatjeen anonymous?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, Chatjeen is 100% anonymous. You don't need to create an account, provide an email, or share any personal information. You can optionally set a nickname, but it's never verified or stored permanently. Chat sessions are ephemeral — when you leave, the conversation is gone."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is Chatjeen safe?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Chatjeen uses real-time AI content moderation to detect and block inappropriate content before it reaches you. You can also instantly report or skip any user with one click. We recommend not sharing personal information with strangers. Visit our Safety page for full guidelines."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Do I need an account to use Chatjeen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "No. Chatjeen requires zero signup. No email, no phone number, no password. Just open the site, optionally pick a nickname and interests, and start chatting instantly."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is Chatjeen free?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, Chatjeen is completely free. There are no premium tiers, no paywalls, no ads blocking your experience. All features including AI matching, AI icebreakers, and AI moderation are free for every user."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How does Chatjeen match me with strangers?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Chatjeen uses AI to match you with strangers who share your interests. You can select interest tags like music, gaming, travel, or philosophy, or choose a conversation mood. Our AI matchmaking finds a compatible partner within seconds rather than pairing you with a completely random person."
+                    }
+                  }
+                ]
               }
             ]
           })
