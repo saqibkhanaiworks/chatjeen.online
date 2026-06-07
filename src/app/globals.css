@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #09090B;
+  --foreground: #FAFAFA;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+/* Premium subtle film-grain texture */
+.bg-grain {
+  position: relative;
+}
+
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom dark scrollbar matching Zinc design */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+/* Apple/Google level touch optimization to prevent double-tap zoom delay */
+button, 
+a, 
+input, 
+textarea, 
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* Hero gradient text helper class */
+.text-pop-gradient {
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism card zinc */
+.glass-panel {
+  background: rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Dynamic height safe areas */
+.h-screen-safe {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Custom horizontal marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+}
+
+/* Custom slow heartbeat pulse for the online indicator dot */
+@keyframes dot-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+.animate-dot-pulse {
+  animation: dot-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Cyber grid scrolling animation for Gaming mood */
+@keyframes grid-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(40px);
+  }
+}
+
+.bg-gaming-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(124, 58, 237, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.15) 1px, transparent 1px);
+  animation: grid-move 3s linear infinite;
+}
+
+/* Custom keyframes for mood-based backgrounds */
+
+/* Float up and rotate (Music, Just Vibes, Food, Sports) */
+@keyframes float-up {
+  0% {
+    transform: translateY(105vh) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up 12s linear infinite;
+}
+
+/* Rotate slow (Travel, Movies, Philosophy) */
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 120s linear infinite;
+}
+
+/* Twinkle stars (2AM Mode, Default) */
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.animate-star-twinkle {
+  animation: star-twinkle 4s ease-in-out infinite;
+}
+
+/* Digital Rain / Matrix (Tech) */
+@keyframes digital-rain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-digital-rain {
+  animation: digital-rain 15s linear infinite;
+}
+
+/* Morphing Liquid Blob (Art) */
+@keyframes morph-blob {
+  0%, 100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  34% {
+    border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
+    transform: translate(5px, 15px) rotate(120deg);
+  }
+  67% {
+    border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+    transform: translate(-15px, -5px) rotate(240deg);
+  }
+}
+
+.animate-morph-blob {
+  animation: morph-blob 20s ease-in-out infinite;
+}
+
+/* Spotlight Sweep (Movies) */
+@keyframes spotlight-sweep {
+  0%, 100% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+}
+
+.animate-spotlight-sweep {
+  animation: spotlight-sweep 10s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* Corrected gaming grid bg scroll */
+.bg-gaming-grid-scroll {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+  animation: grid-move-bg 4s linear infinite;
+}
+
+@keyframes grid-move-bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+
+

@@ -1,0 +1,18 @@
+{
+  "name": "Chatjeen",
+  "short_name": "Chatjeen",
+  "description": "AI-powered anonymous text chat for Gen-Z. Find compatible matches by interests instantly.",
+  "theme_color": "#7C3AED",
+  "background_color": "#0F0F13",
+  "display": "standalone",
+  "start_url": "/chat",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
