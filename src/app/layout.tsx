@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -55,21 +56,35 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased text-textPrimary bg-background">
         {children}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                    console.log('SW registered:', reg.scope);
-                  }).catch(function(err) {
-                    console.log('SW failed:', err);
-                  });
-                });
-              }
-            `
-          }}
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q4YNSNC58F"
+          strategy="afterInteractive"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Q4YNSNC58F');
+          `}
+        </Script>
+
+        {/* Service Worker registration */}
+        <Script id="service-worker" strategy="afterInteractive">
+          {`
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                  console.log('SW registered:', reg.scope);
+                }).catch(function(err) {
+                  console.log('SW failed:', err);
+                });
+              });
+            }
+          `}
+        </Script>
       </body>
     </html>
   );
