@@ -5,35 +5,23 @@ import Link from "next/link";
 import { isWorldCupActive } from "@/app/fanzone/wcData";
 import { ArrowRight, Shield } from "lucide-react";
 
-interface HeaderProps {
-  onBannerStateChange?: (active: boolean) => void;
-}
-
-export default function Header({ onBannerStateChange }: HeaderProps) {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showFanZone, setShowFanZone] = useState(false);
   const [nickname, setNickname] = useState("Stranger");
 
   useEffect(() => {
-    const active = isWorldCupActive();
-    setShowFanZone(active);
-    if (onBannerStateChange) {
-      onBannerStateChange(active);
-    }
+    setShowFanZone(isWorldCupActive());
 
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("chatjeen_nickname");
       if (saved) setNickname(saved);
     }
-  }, [onBannerStateChange]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -72,6 +60,12 @@ export default function Header({ onBannerStateChange }: HeaderProps) {
           </Link>
           
           <div className="flex items-center gap-4 sm:gap-6">
+            <Link 
+              href="/faq" 
+              className="text-[13px] font-medium text-textMuted hover:text-white transition-colors hidden sm:block"
+            >
+              FAQ
+            </Link>
             <Link 
               href="/safety" 
               className="text-[13px] font-medium text-textMuted hover:text-white transition-colors flex items-center gap-1"

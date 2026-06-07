@@ -1,13 +1,43 @@
-"use client";
-
-import React, { useState } from "react";
+import type { Metadata } from "next";
+import React from "react";
 import { Shield, RefreshCw, EyeOff, AlertTriangle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function SafetyPage() {
-  const [bannerActive, setBannerActive] = useState(false);
+export const metadata: Metadata = {
+  title: "Safety & Trust — How We Keep You Safe | Chatjeen",
+  description:
+    "Chatjeen uses real-time AI moderation, instant skip & report, and zero data storage to keep every anonymous conversation safe. Read our community guidelines.",
+  alternates: {
+    canonical: "https://chatjeen.online/safety",
+  },
+  openGraph: {
+    title: "Chatjeen Safety — How We Keep You Safe",
+    description:
+      "Real-time AI moderation, zero stored chats, and instant skip & report controls. Here's exactly how Chatjeen protects every user.",
+    url: "https://chatjeen.online/safety",
+    siteName: "Chatjeen",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/icons/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Chatjeen Safety & Trust — AI-Powered Moderation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chatjeen Safety — How We Protect You",
+    description:
+      "AI moderation, zero data storage, instant skip & report. Chatjeen is built around your privacy and safety.",
+    images: ["/icons/og-image.png"],
+  },
+};
 
+export default function SafetyPage() {
   return (
     <div className="bg-background text-textPrimary min-h-screen relative bg-grain overflow-x-hidden flex flex-col justify-between">
       {/* Dynamic background blurs */}
@@ -15,17 +45,13 @@ export default function SafetyPage() {
       <div className="absolute bottom-1/4 right-[5%] w-80 h-80 rounded-full pointer-events-none bg-primary/5 blur-3xl z-0" />
 
       {/* NAVBAR */}
-      <Header onBannerStateChange={setBannerActive} />
+      <Header />
 
       {/* HERO & CONTENT */}
-      <main 
-        className={`pb-20 px-4 max-w-3xl mx-auto space-y-12 flex-1 w-full relative z-10 transition-all duration-300 ${
-          bannerActive ? "pt-40" : "pt-32"
-        }`}
-      >
+      <main className="pt-32 pb-20 px-4 max-w-3xl mx-auto space-y-12 flex-1 w-full relative z-10">
         <div className="text-center space-y-4">
           <div className="inline-flex items-center bg-surface2 border border-border px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-primary uppercase tracking-wider">
-            Trust & Safety
+            Trust &amp; Safety
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
             Your safety is the product
@@ -35,7 +61,7 @@ export default function SafetyPage() {
           </p>
         </div>
 
-        {/* 2X2 GRID OR LIST OF SEGMENTS */}
+        {/* SAFETY SEGMENTS */}
         <div className="space-y-6">
           
           {/* How AI Moderation Works */}
@@ -83,7 +109,7 @@ export default function SafetyPage() {
               <AlertTriangle className="w-6 h-6" />
             </div>
             <div className="space-y-2">
-              <h2 className="text-xl font-bold text-danger tracking-tight group-hover:text-danger transition-colors">Zero tolerance policy</h2>
+              <h2 className="text-xl font-bold text-danger tracking-tight">Zero tolerance policy</h2>
               <p className="text-sm text-textMuted leading-relaxed font-normal">
                 Chatjeen is a friendly space. We immediately ban users flagged for sharing explicit media links, spamming advertisements, or sending abusive comments. Our moderation system is active 24/7 to suspend bad actors.
               </p>
@@ -124,7 +150,7 @@ export default function SafetyPage() {
             <div className="flex gap-4 items-start group/item">
               <div className="w-6 h-6 rounded-full bg-surface2 border border-border text-primary group-hover/item:bg-primary group-hover/item:text-white flex items-center justify-center font-bold shrink-0 text-xs transition-colors duration-200">5</div>
               <div>
-                <strong className="text-white">Use flags responsibly.</strong> Only report players who break rules. Abuse of the report tool is subject to review.
+                <strong className="text-white">Use flags responsibly.</strong> Only report users who break rules. Abuse of the report tool is subject to review.
               </div>
             </div>
           </div>

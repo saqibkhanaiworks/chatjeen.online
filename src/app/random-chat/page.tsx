@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function RandomChatPage() {
-  const [bannerActive, setBannerActive] = useState(false);
-
   return (
     <div className="bg-background text-textPrimary min-h-screen relative bg-grain overflow-x-hidden flex flex-col justify-between">
       {/* Dynamic background blurs */}
@@ -16,13 +14,11 @@ export default function RandomChatPage() {
       <div className="absolute bottom-1/4 right-[5%] w-80 h-80 rounded-full pointer-events-none bg-primary/5 blur-3xl z-0" />
 
       {/* NAVBAR */}
-      <Header onBannerStateChange={setBannerActive} />
+      <Header />
 
       {/* CONTENT */}
       <main 
-        className={`pb-20 px-4 max-w-3xl mx-auto space-y-12 flex-1 w-full relative z-10 transition-all duration-300 ${
-          bannerActive ? "pt-40" : "pt-32"
-        }`}
+        className="pb-20 px-4 max-w-3xl mx-auto space-y-12 flex-1 w-full relative z-10 pt-32"
       >
         <div className="space-y-4 text-center">
           <div className="inline-flex items-center bg-surface2 border border-border px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-primary uppercase tracking-wider">

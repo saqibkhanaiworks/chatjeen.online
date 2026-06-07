@@ -27,6 +27,7 @@ export default function Footer() {
             <div className="font-bold text-textPrimary uppercase tracking-wider text-[10px]">App</div>
             <ul className="space-y-2">
               <li><Link href="/chat" className="text-textMuted hover:text-white transition-colors">Start Chatting</Link></li>
+              <li><Link href="/blog" className="text-textMuted hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/about" className="text-textMuted hover:text-white transition-colors">About Us</Link></li>
               <li><Link href="/safety" className="text-textMuted hover:text-white transition-colors">Safety Guide</Link></li>
               <li><Link href="/faq" className="text-textMuted hover:text-white transition-colors">FAQ</Link></li>
@@ -46,12 +47,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* More */}
+          {/* Chat Moods */}
           <div className="space-y-3">
-            <div className="font-bold text-textPrimary uppercase tracking-wider text-[10px]">More</div>
+            <div className="font-bold text-textPrimary uppercase tracking-wider text-[10px]">Chat Moods</div>
             <ul className="space-y-2">
-              <li><Link href="/free-chat-no-signup" className="text-textMuted hover:text-white transition-colors">No Signup Chat</Link></li>
-              <li><Link href="/online-chat-rooms" className="text-textMuted hover:text-white transition-colors">Chat Rooms</Link></li>
+              <li><Link href="/chat/philosophy" className="text-textMuted hover:text-white transition-colors">🤔 Deep Talk</Link></li>
+              <li><Link href="/chat/gaming" className="text-textMuted hover:text-white transition-colors">🎮 Gamer Talk</Link></li>
+              <li><Link href="/chat/music" className="text-textMuted hover:text-white transition-colors">🎵 Music Match</Link></li>
+              <li><Link href="/chat/travel" className="text-textMuted hover:text-white transition-colors">🌍 Culture Swap</Link></li>
+              <li><Link href="/chat/2am" className="text-textMuted hover:text-white transition-colors">🌙 2AM Mode</Link></li>
             </ul>
           </div>
 
@@ -76,3 +80,4 @@ export default function Footer() {
     </footer>
   );
 }
+

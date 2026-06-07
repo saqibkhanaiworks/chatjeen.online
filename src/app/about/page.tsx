@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Bot, Shield, Zap } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function AboutPage() {
-  const [bannerActive, setBannerActive] = useState(false);
 
   return (
     <div className="bg-background text-textPrimary min-h-screen relative bg-grain overflow-x-hidden flex flex-col justify-between">
@@ -15,14 +14,10 @@ export default function AboutPage() {
       <div className="absolute bottom-1/3 left-[10%] w-72 h-72 rounded-full pointer-events-none bg-primary/5 blur-3xl z-0" />
 
       {/* NAVBAR */}
-      <Header onBannerStateChange={setBannerActive} />
+      <Header />
 
       {/* HERO & CONTENT */}
-      <main 
-        className={`pb-20 px-4 max-w-4xl mx-auto space-y-16 flex-1 w-full relative z-10 transition-all duration-300 ${
-          bannerActive ? "pt-40" : "pt-32"
-        }`}
-      >
+      <main className="pb-20 px-4 max-w-4xl mx-auto space-y-16 flex-1 w-full relative z-10 pt-32">
         <div className="text-center space-y-4">
           <div className="inline-flex items-center bg-surface2 border border-border px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-primary uppercase tracking-wider">
             Our Story

@@ -14,7 +14,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [activeUsers, setActiveUsers] = useState(1420);
   const [nickname, setNickname] = useState("Stranger");
 
   // Load saved nickname on mount
@@ -23,18 +22,6 @@ export default function Home() {
       const saved = localStorage.getItem("chatjeen_nickname");
       if (saved) setNickname(saved);
     }
-  }, []);
-
-  // Increment active users counter slowly
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveUsers((prev) => {
-        const delta = Math.floor(Math.random() * 5) - 2; // -2 to +2
-        const next = prev + delta;
-        return next < 800 ? 800 : next > 2400 ? 2400 : next;
-      });
-    }, 4000);
-    return () => clearInterval(interval);
   }, []);
 
   // Mood Roulette Options
@@ -336,24 +323,38 @@ export default function Home() {
 
       {/* SOCIAL PROOF BAR */}
       <section className="bg-surface/10 border-y border-border py-4 px-4 text-center relative z-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-dot-pulse" />
+            <span className="text-lg">💬</span>
             <span className="font-semibold text-xs text-textPrimary uppercase tracking-wider">
-              {activeUsers.toLocaleString()} people chatting right now
+              50,000+ conversations started
+            </span>
+          </div>
+          <span className="hidden md:block w-[1px] h-4 bg-border" />
+          <div className="flex items-center gap-2">
+            <span className="text-lg">🌍</span>
+            <span className="font-semibold text-xs text-textPrimary uppercase tracking-wider">
+              Chatters from 80+ countries
+            </span>
+          </div>
+          <span className="hidden md:block w-[1px] h-4 bg-border" />
+          <div className="flex items-center gap-2">
+            <span className="text-lg">🔒</span>
+            <span className="font-semibold text-xs text-textPrimary uppercase tracking-wider">
+              Zero signup · Zero logs
             </span>
           </div>
         </div>
       </section>
 
-      {/* CONVERSATION PREVIEW MARQUEE TICKER */}
+      {/* CONVERSATION PROMPT MARQUEE TICKER */}
       <div className="relative overflow-hidden w-full py-3 bg-surface/20 border-b border-border z-10 group">
         <div className="flex w-max animate-marquee">
           <span className="px-4 text-[13px] text-textMuted font-medium tracking-wide">
-            💬 happening now — someone from Japan just taught me how to make ramen 🍜 · been talking to a stranger in Argentina for 2 hours 🌎 · this person guessed my favorite movie correctly 😭 · just had the most unhinged philosophy debate with someone 🤯 · they said something that genuinely changed my perspective · talked to a nurse in Kenya about her day. I cried a little
+            💭 What would you ask a stranger from Japan? 🍜 · Someone out there has the exact same weird hobby as you 🌎 · What do people in Argentina talk about at midnight? 🎸 · There&apos;s a stranger right now who&apos;d love your music taste 🎵 · Some conversations only happen when no one knows your name 🌙 · What would a nurse in Nairobi want to talk about today? ✨
           </span>
           <span className="px-4 text-[13px] text-textMuted font-medium tracking-wide">
-            💬 happening now — someone from Japan just taught me how to make ramen 🍜 · been talking to a stranger in Argentina for 2 hours 🌎 · this person guessed my favorite movie correctly 😭 · just had the most unhinged philosophy debate with someone 🤯 · they said something that genuinely changed my perspective · talked to a nurse in Kenya about her day. I cried a little
+            💭 What would you ask a stranger from Japan? 🍜 · Someone out there has the exact same weird hobby as you 🌎 · What do people in Argentina talk about at midnight? 🎸 · There&apos;s a stranger right now who&apos;d love your music taste 🎵 · Some conversations only happen when no one knows your name 🌙 · What would a nurse in Nairobi want to talk about today? ✨
           </span>
         </div>
       </div>
@@ -448,59 +449,65 @@ export default function Home() {
       {/* SECTION DIVIDER */}
       <div className="w-full h-[1px] bg-[#18181B]" />
 
-      {/* STRANGER STORIES SECTION */}
+      {/* WHAT CHATJEEN IS FOR SECTION */}
       <section className="py-20 px-4 max-w-5xl mx-auto relative z-10 space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-3xl font-bold text-white tracking-tight">
-            Some conversations stay with you
+            What happens when you talk to a stranger
           </h2>
           <p className="text-sm text-textMuted max-w-md mx-auto">
-            Real things people said after chatting on Chatjeen.
+            Anonymous conversations open up things people rarely say out loud.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <div className="bg-surface border-left-accent border border-l-0 border-border rounded-r-[12px] p-6 flex flex-col justify-between min-h-[190px]">
-            <p className="text-[#FAFAFA] text-[15px] italic leading-relaxed">
-              &quot;Asked a stranger what they&apos;d do with one free day. We talked for 3 hours. Still thinking about their answer.&quot;
-            </p>
-            <div className="mt-4 space-y-2">
-              <span className="text-[#71717A] text-[13px] block">
-                — anonymous, matched with someone from Germany
-              </span>
+          {/* Card 1 — Deep Talk */}
+          <div className="bg-surface border border-border rounded-[16px] p-6 flex flex-col justify-between min-h-[200px] hover:border-primary/40 transition-all duration-300 group relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary/60 to-transparent" />
+            <div>
+              <div className="text-2xl mb-3">🤔</div>
+              <h3 className="text-white font-bold text-base mb-2">Deep Talk</h3>
+              <p className="text-textMuted text-sm leading-relaxed">
+                Some questions are easier to ask a stranger than anyone you know. Pick Deep Talk to find someone who wants to go there.
+              </p>
+            </div>
+            <div className="mt-5">
               <span className="inline-block px-2.5 py-0.5 rounded-full bg-surface2 text-[12px] text-textMuted font-medium">
-                🤔 Deep Talk
+                Philosophy · Life · Big questions
               </span>
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-surface border-left-accent border border-l-0 border-border rounded-r-[12px] p-6 flex flex-col justify-between min-h-[190px]">
-            <p className="text-[#FAFAFA] text-[15px] italic leading-relaxed">
-              &quot;They recommended an album I&apos;d never heard. I&apos;ve listened to it 47 times since. Never got their name.&quot;
-            </p>
-            <div className="mt-4 space-y-2">
-              <span className="text-[#71717A] text-[13px] block">
-                — anonymous, matched with someone from Japan
-              </span>
+          {/* Card 2 — Music Match */}
+          <div className="bg-surface border border-border rounded-[16px] p-6 flex flex-col justify-between min-h-[200px] hover:border-primary/40 transition-all duration-300 group relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent/60 to-transparent" />
+            <div>
+              <div className="text-2xl mb-3">🎵</div>
+              <h3 className="text-white font-bold text-base mb-2">Music Match</h3>
+              <p className="text-textMuted text-sm leading-relaxed">
+                Somewhere out there is a stranger with a nearly identical playlist. Start with Music Match and find out what they&apos;re listening to right now.
+              </p>
+            </div>
+            <div className="mt-5">
               <span className="inline-block px-2.5 py-0.5 rounded-full bg-surface2 text-[12px] text-textMuted font-medium">
-                🎵 Music Match
+                Albums · Artists · Late night tracks
               </span>
             </div>
           </div>
 
-          {/* Card 3 */}
-          <div className="bg-surface border-left-accent border border-l-0 border-border rounded-r-[12px] p-6 flex flex-col justify-between min-h-[190px]">
-            <p className="text-[#FAFAFA] text-[15px] italic leading-relaxed">
-              &quot;I was having the worst day. A stranger in Brazil told me about their terrible day too. We both felt better somehow.&quot;
-            </p>
-            <div className="mt-4 space-y-2">
-              <span className="text-[#71717A] text-[13px] block">
-                — anonymous, matched with someone from Brazil
-              </span>
+          {/* Card 3 — Just Vibes */}
+          <div className="bg-surface border border-border rounded-[16px] p-6 flex flex-col justify-between min-h-[200px] hover:border-primary/40 transition-all duration-300 group relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pop/60 to-transparent" />
+            <div>
+              <div className="text-2xl mb-3">🌙</div>
+              <h3 className="text-white font-bold text-base mb-2">Just Vibes</h3>
+              <p className="text-textMuted text-sm leading-relaxed">
+                Sometimes you just need to talk to someone who doesn&apos;t know anything about you. No context, no history, no judgment. Just vibes.
+              </p>
+            </div>
+            <div className="mt-5">
               <span className="inline-block px-2.5 py-0.5 rounded-full bg-surface2 text-[12px] text-textMuted font-medium">
-                😂 Just Vibes
+                Memes · Randomness · No pressure
               </span>
             </div>
           </div>
